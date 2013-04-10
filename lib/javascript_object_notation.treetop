@@ -2,11 +2,53 @@ grammar JavaScriptObjectNotation
   # Your solution goes here
 
   # Just scribbling on the blank page
+  rule starting_rule
+	  hash
+	  /
+    empty_hash
+    /
+	  nothing
+  end
+
   rule nothing
     "" {
       def to_hash
-        :nowt
+        :nothing
       end
     }
   end
+
+  rule empty_hash
+    "{" space "}" {
+      def to_hash
+        {}
+      end
+    }
+  end
+
+  rule hash
+	  "{" space key:hash_element space ":" space value:hash_element space  "}" {
+		  def to_hash
+			  { key.element => value.element  }
+		  end
+	  }
+  end
+
+  rule hash_element
+	  '"' element:characters '"' {
+      def element
+        element.text_value
+      end
+    }
+  end
+
+  rule characters
+	  [a-z]+
+  end
+
+  rule space
+	  " "*
+  end
+
+
 end

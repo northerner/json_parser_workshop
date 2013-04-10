@@ -16,19 +16,16 @@ describe JavaScriptObjectNotationParser do
 
   describe "getting started" do
     example do
-      pending
       expect('').to parse_as(:nothing)
     end
   end
 
   describe "an empty object" do
     example do
-      pending
       expect('{}').to parse_as({ })
     end
 
     example do
-      pending
       # It's not important when you do this one,
       # it's just a sanity check
       expect('{   }').to parse_as({ })
@@ -39,7 +36,6 @@ describe JavaScriptObjectNotationParser do
 
   describe "string values" do
     example do
-      pending
       expect('{ "a" : "b" }').to parse_as({ "a" => "b" })
     end
 
